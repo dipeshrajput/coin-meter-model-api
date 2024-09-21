@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 import yfinance as yf
 import datetime as dt
-import pandas as pd
 from prophet import Prophet
 
 app = Flask(__name__)
