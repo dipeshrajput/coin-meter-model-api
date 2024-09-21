@@ -35,12 +35,14 @@ def predict():
         df.columns = ['ds', 'y']
 
         # Train the Prophet model
-        model = Prophet()
+        model = Prophet(daily_seasonality=True)
         model.fit(df)
 
-        # Make future predictions for 1 year (365 days)
-        future = model.make_future_dataframe(periods=365)
+        # Make future predictions for 100 days
+        future = model.make_future_dataframe(periods=100)
         forecast = model.predict(future)
+        forecast = forecast.tail(200)
+        df = df.tail(100)
 
         # Prepare the data for JSON response
         response_data = {
