@@ -44,6 +44,7 @@ def predict():
 
         # Prepare the data for JSON response
         response_data = {
+            'symbol': symbol,
             'dates': forecast['ds'].dt.strftime('%Y-%m-%d').tolist(),
             'predicted': forecast['yhat'].tolist(),
             'lower_bound': forecast['yhat_lower'].tolist(),
